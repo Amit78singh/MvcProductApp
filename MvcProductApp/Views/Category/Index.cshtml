@@ -1,0 +1,30 @@
+﻿
+
+
+@model IEnumerable<MvcProductApp.Models.Category>
+<h2>Category List</h2>
+<p>
+    <a href="@Url.Action("Create", "Category")">Add New Category</a>
+</p>
+<table>
+    <thead>
+        <tr>
+            <th>CategoryId</th>
+            <th>CategoryName</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CategoryId</td>
+                <td>@item.CategoryName</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Category", new { id = item.CategoryId })">Edit</a> |
+                    <a href="@Url.Action("Delete", "Category", new { id = item.CategoryId })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

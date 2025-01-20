@@ -1,0 +1,14 @@
+﻿@model MvcProductApp.Models.Category
+<h2>Create Category</h2>
+@using (Html.BeginForm())
+{
+    <div>
+        <label>Category Name</label>
+        @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CategoryName)
+    </div>
+    <div>
+        <input type="submit" value="Create" />
+    </div>
+}
+<a href="@Url.Action("Index", "Category")">Back to List</a>

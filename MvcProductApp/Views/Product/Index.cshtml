@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MvcProductApp.Models.Product>
+<h2>Product List</h2>
+<p>
+    <a href="@Url.Action("Create", "Product")">Add New Product</a>
+</p>
+<table>
+    <thead>
+        <tr>
+            <th style="padding-right: 20px;">ProductId</th>
+            <th style="padding-right: 20px;">ProductName</th>
+            <th style="padding-right: 20px;">CategoryId</th>
+            <th style="padding-right: 20px;">CategoryName</th>
+            <th style="padding-right: 20px;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="padding-right: 20px;">@item.ProductId</td>
+                <td style="padding-right: 20px;">@item.ProductName</td>
+                <td style="padding-right: 20px;">@item.CategoryId</td>
+                <td style="padding-right: 20px;">@item.Category.CategoryName</td>
+                <td style="padding-right: 20px;">
+                    <a href="@Url.Action("Edit", "Product", new { id = item.ProductId })">Edit</a> |
+                    <a href="@Url.Action("Delete", "Product", new { id = item.ProductId })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a href="@Url.Action("Index", new { page = ViewBag.CurrentPage - 1 })">Previous</a>
+    <a href="@Url.Action("Index", new { page = ViewBag.CurrentPage + 1 })">Next</a>
+</div>

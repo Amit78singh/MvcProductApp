@@ -1,0 +1,19 @@
+﻿@model MvcProductApp.Models.Product
+<h2>Create Product</h2>
+@using (Html.BeginForm())
+{
+    <div>
+        <label>Product Name</label>
+        @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductName)
+    </div>
+    <div>
+        <label>Category</label>
+        @Html.DropDownListFor(m => m.CategoryId, new SelectList(ViewBag.Categories, "CategoryId", "CategoryName"), "Select Category", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CategoryId)
+    </div>
+    <div>
+        <input type="submit" value="Create" />
+    </div>
+}
+<a href="@Url.Action("Index", "Product")">Back to List</a>

@@ -1,0 +1,28 @@
+﻿@model MvcProductApp.Models.Product
+
+<h2>Edit Product</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.ProductId)
+
+    <div>
+        <label>Product Name</label>
+        @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ProductName)
+    </div>
+
+    <div>
+        <label>Category</label>
+        @Html.DropDownListFor(m => m.CategoryId,
+            new SelectList(ViewBag.Categories, "CategoryId", "CategoryName", Model.CategoryId),
+            "Select Category",
+            new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CategoryId)
+    </div>
+
+    <div>
+        <input type="submit" value="Save Changes" class="btn btn-primary" />
+        <a href="@Url.Action("Index", "Product")" class="btn btn-secondary">Cancel</a>
+    </div>
+}
